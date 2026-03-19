@@ -76,7 +76,7 @@ server.run()
 ## Prerequisites
 
 - Python 3.8+
-- Valid RustChain API key (get one at [rustchain.io](https://rustchain.io))
+- Valid RustChain API key (get one at [rustchain.org](https://rustchain.org))
 - MCP-compatible client (Claude, Continue, etc.)
 
 ## Available Tools
@@ -222,14 +222,14 @@ rustchain-mcp --debug --log-file rustchain.log
 
 ### Getting Help
 
-- 📖 **Documentation:** [docs.rustchain.io](https://docs.rustchain.io)
+- 📖 **Documentation:** [docs.rustchain.org](https://docs.rustchain.org)
 - 💬 **Discord:** [RustChain Community](https://discord.gg/rustchain)
 - 🐛 **Issues:** [GitHub Issues](https://github.com/Scottcjn/Rustchain/issues)
-- 💰 **Bounties:** [Complete documentation bounties for RTC rewards](https://rustchain.io/bounties)
+- 💰 **Bounties:** [Complete documentation bounties for RTC rewards](https://rustchain.org/bounties)
 
 ## Contributing
 
-We welcome contributions! Check out our [bounty system](https://rustchain.io/bounties) where you can earn RTC for:
+We welcome contributions! Check out our [bounty system](https://rustchain.org/bounties) where you can earn RTC for:
 
 - 📝 Documentation improvements (1-50 RTC)
 - 🐛 Bug fixes (10-100 RTC)  
