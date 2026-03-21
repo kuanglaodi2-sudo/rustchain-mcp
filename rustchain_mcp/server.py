@@ -172,6 +172,41 @@ def rustchain_lottery_eligibility(miner_id: str) -> dict:
 
 
 @mcp.tool()
+def bcos_verify(cert_id: str) -> dict:
+    """Verify a BCOS v2 certificate by its ID.
+
+    Args:
+        cert_id: The certificate ID to verify (e.g., "bcos_abc123...")
+
+    Returns verification result including certificate validity,
+    issuer, subject, and chain status.
+    """
+    r = get_client().get(f"{RUSTCHAIN_NODE}/bcos/verify/{cert_id}")
+    r.raise_for_status()
+    return r.json()
+
+
+@mcp.tool()
+def bcos_directory(tier: str = "", limit: int = 20) -> dict:
+    """Browse the BCOS v2 certificate directory.
+
+    Args:
+        tier: Optional tier filter (e.g., "gold", "silver", "bronze").
+              Empty string returns all tiers.
+        limit: Maximum number of entries to return (default: 20)
+
+    Returns directory listing of BCOS certificates with tier,
+    subject, and verification status.
+    """
+    params = {"limit": limit}
+    if tier:
+        params["tier"] = tier
+    r = get_client().get(f"{RUSTCHAIN_NODE}/bcos/directory", params=params)
+    r.raise_for_status()
+    return r.json()
+
+
+@mcp.tool()
 def rustchain_transfer_signed(
     from_address: str,
     to_address: str,
