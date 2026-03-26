@@ -34,14 +34,14 @@ BEACON_URL = os.environ.get("BEACON_URL", "https://rustchain.org/beacon")
 
 def _get(url: str, params: dict = None, timeout: int = 30) -> dict:
     """Make GET request with error handling."""
-    r = requests.get(url, params=params, timeout=timeout, verify=False)
+    r = requests.get(url, params=params, timeout=timeout, verify=_TLS_VERIFY)
     r.raise_for_status()
     return r.json()
 
 
 def _post(url: str, json_data: dict, headers: dict = None, timeout: int = 30) -> dict:
     """Make POST request with error handling."""
-    r = requests.post(url, json=json_data, headers=headers, timeout=timeout, verify=False)
+    r = requests.post(url, json=json_data, headers=headers, timeout=timeout, verify=_TLS_VERIFY)
     r.raise_for_status()
     return r.json()
 

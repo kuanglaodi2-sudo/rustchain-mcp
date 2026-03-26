@@ -46,7 +46,7 @@ logging.basicConfig(
 )
 log = logging.getLogger("evangelist")
 
-client = httpx.Client(timeout=30, verify=False)
+client = httpx.Client(timeout=30, verify=_TLS_VERIFY)
 
 
 # ── Discovery ─────────────────────────────────────────────────

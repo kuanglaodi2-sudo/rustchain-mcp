@@ -48,13 +48,22 @@ mcp = FastMCP(
     ),
 )
 
+# TLS verification — secure by default, configurable for self-signed certs
+_TLS_VERIFY = os.environ.get("RUSTCHAIN_CA_BUNDLE",
+              os.environ.get("RUSTCHAIN_TLS_VERIFY", "true")).lower()
+if _TLS_VERIFY in ("false", "0", "no"):
+    _TLS_VERIFY = False
+elif _TLS_VERIFY == "true":
+    _TLS_VERIFY = True
+# else: treat as path to CA bundle
+
 # Shared HTTP client
 _client = None
 
 def get_client() -> httpx.Client:
     global _client
     if _client is None:
-        _client = httpx.Client(timeout=RUSTCHAIN_TIMEOUT, verify=False)
+        _client = httpx.Client(timeout=RUSTCHAIN_TIMEOUT, verify=_TLS_VERIFY)
     return _client
 
 
